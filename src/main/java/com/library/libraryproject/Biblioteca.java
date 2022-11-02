@@ -68,13 +68,15 @@ public class Biblioteca {
             while (entrada.hasNextLine()) {
                 campos = entrada.nextLine().split("\t");
                 libro = new Libro();
-                libro.setISBN(campos[0]);
-                libro.setTitulo(campos[1]);
-                libro.setAutor(campos[2]);
-                libro.setEditorial(campos[3]);
-                libro.setEdicion(Integer.parseInt(campos[4]));
-                libro.setAnno_de_publicacion(Integer.parseInt(campos[5]));
+                libro.setId(campos[0]);
+                libro.setISBN(campos[1]);
+                libro.setTitulo(campos[2]);
+                libro.setAutor(campos[3]);
+                libro.setEditorial(campos[4]);
+                libro.setEdicion(Integer.parseInt(campos[5]));
+                libro.setAnno_de_publicacion(Integer.parseInt(campos[6]));
                 vector.add(libro);
+                System.out.println(libro.toString());
             }
             entrada.close();
 

@@ -18,8 +18,15 @@ public class Administracion extends javax.swing.JFrame {
     /**
      * Creates new form Administracion
      */
+    private Vector<Libro> librosVector;
+    
     public Administracion() {
         initComponents();
+        loadBooks();
+    }
+    
+    private void loadBooks() {
+        librosVector = Biblioteca.getLibrosFromFile();
     }
 
     /**
@@ -32,7 +39,6 @@ public class Administracion extends javax.swing.JFrame {
     private void initComponents() {
 
         saveButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
         searchButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -54,18 +60,10 @@ public class Administracion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        saveButton.setActionCommand("");
         saveButton.setLabel("Guardar");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
-            }
-        });
-
-        exitButton.setLabel("Salir");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
             }
         });
 
@@ -161,13 +159,8 @@ public class Administracion extends javax.swing.JFrame {
                         .addComponent(searchButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ISBNSearchField)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exitButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(187, 187, 187)
@@ -215,8 +208,7 @@ public class Administracion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(searchButton)
-                                    .addComponent(ISBNSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(exitButton)))))
+                                    .addComponent(ISBNSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -226,30 +218,39 @@ public class Administracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exitButtonActionPerformed
-
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titleFieldActionPerformed
 
+    private Libro searchBook(String ISBN) {
+        int pos = 0;
+
+        for(Libro libro : librosVector) {
+            if(ISBN.equalsIgnoreCase(libro.getISBN()))
+                return librosVector.get(pos);
+            pos++;
+        }
+
+        return null;
+    }
+    
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        Vector<Libro> vector = Biblioteca.getLibrosFromFile();
-        int i, n;
-        Libro dato = null, libro;
-        int[] contador = {0};
-        libro = new Libro();
-        libro.setISBN(ISBNSearchField.getText());
-        i = vector.indexOf(libro);
-        dato = i < 0 ? null : vector.get(i);
-        if (dato != null) {
-            ISBNField.setText(dato.getISBN());
-            titleField.setText(dato.getTitulo());
-            authorField.setText(dato.getAutor());
-            editorialField.setText(dato.getEditorial());
-            edicionField.setText(Integer.toString(dato.getEdicion()));
-            publicacionField.setText(Integer.toString(dato.getAnno_de_publicacion()));
+        Libro libroEncontrado = searchBook(ISBNSearchField.getText());
+
+        if (libroEncontrado != null) {
+            ISBNField.setText(libroEncontrado.getISBN());
+            titleField.setText(libroEncontrado.getTitulo());
+            authorField.setText(libroEncontrado.getAutor());
+            editorialField.setText(libroEncontrado.getEditorial());
+            edicionField.setText(Integer.toString(libroEncontrado.getEdicion()));
+            publicacionField.setText(Integer.toString(libroEncontrado.getAnno_de_publicacion()));
+        } else {
+            ISBNField.setText("");
+            titleField.setText("");
+            authorField.setText("");
+            editorialField.setText("");
+            edicionField.setText("");
+            publicacionField.setText("");
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -262,16 +263,16 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        Vector<Libro> vector = Biblioteca.getLibrosFromFile();
         Libro libro = new Libro();
+        libro.setId(librosVector.size()+1+"");
         libro.setISBN(ISBNField.getText());
         libro.setTitulo(titleField.getText());
         libro.setAutor(authorField.getText());
         libro.setEditorial(editorialField.getText());
         libro.setEdicion(Integer.parseInt(edicionField.getText()));
         libro.setAnno_de_publicacion(Integer.parseInt(publicacionField.getText()));
-        vector.add(libro);
-        Biblioteca.printEnArchivo(vector);
+        librosVector.add(libro);
+        Biblioteca.printEnArchivo(librosVector);
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void ISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ISBNFieldActionPerformed
@@ -319,7 +320,6 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JTextField authorField;
     private javax.swing.JTextField edicionField;
     private javax.swing.JTextField editorialField;
-    private javax.swing.JButton exitButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -6,6 +6,7 @@ package com.library.libraryproject;
 
 public class Libro implements Comparable<Libro> {
 
+    private String id;
     private String ISBN;
     private String titulo;
     private String autor;
@@ -25,12 +26,21 @@ public class Libro implements Comparable<Libro> {
 
     @Override
     public String toString() {
-        return "ISBN               : " + ISBN + "\n"
+        return "id: " + id + "\n"
+                + "ISBN               : " + ISBN + "\n"
                 + "titulo             : " + titulo + "\n"
                 + "autor              : " + autor + "\n"
                 + "editorial          : " + editorial + "\n"
                 + "edicion            : " + edicion + "\n"
                 + "anno de publicacion: " + anno_de_publicacion + "\n";
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getISBN() {

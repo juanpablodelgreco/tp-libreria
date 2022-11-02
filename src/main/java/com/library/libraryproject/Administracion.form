@@ -68,16 +68,8 @@
                       <Component id="ISBNSearchField" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="271" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="exitButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="283" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -136,7 +128,6 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="searchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="ISBNSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="exitButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -154,19 +145,10 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
-        <Property name="actionCommand" type="java.lang.String" value=""/>
         <Property name="label" type="java.lang.String" value="Guardar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="exitButton">
-      <Properties>
-        <Property name="label" type="java.lang.String" value="Salir"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="searchButton">
