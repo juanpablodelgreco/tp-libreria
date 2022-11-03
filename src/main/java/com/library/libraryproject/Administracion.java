@@ -19,6 +19,7 @@ public class Administracion extends javax.swing.JFrame {
      * Creates new form Administracion
      */
     private Vector<Libro> librosVector;
+    private Libro libroAEditarEncontrado;
     
     public Administracion() {
         initComponents();
@@ -38,189 +39,483 @@ public class Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        saveButton = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        titleField = new javax.swing.JTextField();
-        authorField = new javax.swing.JTextField();
-        editorialField = new javax.swing.JTextField();
-        edicionField = new javax.swing.JTextField();
-        publicacionField = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        ISBNField = new javax.swing.JTextField();
-        ISBNSearchField = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanelSearch = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        searchISBNField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        searchTitleField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        searchAuthorField = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        searchEditorialField = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        searchEdicionField = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        searchPublicacionField = new javax.swing.JTextField();
+        searchSectionButton = new javax.swing.JButton();
+        jLabelResult = new javax.swing.JLabel();
+        jLabel = new javax.swing.JLabel();
+        jPanelCreate = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        createISBNField = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        createTitleField = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        createAuthorField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        createEditorialField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        createEdicionField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        createPublicacionField = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        createSaveButton = new javax.swing.JButton();
+        jLabelResult3 = new javax.swing.JLabel();
+        jPanelEdit = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        editISBNField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        editTitleField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        editAuthorField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        editEditorialField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        editEdicionField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        editPublicacionField = new javax.swing.JTextField();
+        editSearchButton = new javax.swing.JButton();
+        editCancelButton = new javax.swing.JButton();
+        editSaveButton = new javax.swing.JButton();
+        jLabelResult2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        saveButton.setLabel("Guardar");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
-            }
-        });
-
-        searchButton.setText("Buscar por ISBN");
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Título");
-
-        jLabel2.setText("Autor");
-
-        jLabel3.setText("Editorial");
-
-        jLabel4.setText("Edición");
-
-        jLabel5.setText("Año publicación");
-
-        titleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleFieldActionPerformed(evt);
-            }
-        });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jLabel6.setText("Administración de libros");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setLabel("Limpiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel20.setText("ISBN");
+
+        searchISBNField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchISBNFieldActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("ISBN");
+        jLabel21.setText("Título");
 
-        ISBNField.addActionListener(new java.awt.event.ActionListener() {
+        searchTitleField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        searchTitleField.setEnabled(false);
+        searchTitleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ISBNFieldActionPerformed(evt);
+                searchTitleFieldActionPerformed(evt);
             }
         });
 
-        ISBNSearchField.setForeground(new java.awt.Color(153, 153, 153));
-        ISBNSearchField.setToolTipText("");
-        ISBNSearchField.addActionListener(new java.awt.event.ActionListener() {
+        jLabel22.setText("Autor");
+
+        searchAuthorField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        searchAuthorField.setEnabled(false);
+
+        jLabel23.setText("Editorial");
+
+        searchEditorialField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        searchEditorialField.setEnabled(false);
+
+        jLabel24.setText("Edición");
+
+        searchEdicionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        searchEdicionField.setEnabled(false);
+
+        jLabel25.setText("Año publicación");
+
+        searchPublicacionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        searchPublicacionField.setEnabled(false);
+
+        searchSectionButton.setText("Buscar");
+        searchSectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ISBNSearchFieldActionPerformed(evt);
+                searchSectionButtonActionPerformed(evt);
             }
         });
+
+        jLabelResult.setForeground(new java.awt.Color(255, 51, 51));
+        jLabelResult.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+
+        jLabel.setText("Ingrese el ISBN del libro deseado:");
+
+        javax.swing.GroupLayout jPanelSearchLayout = new javax.swing.GroupLayout(jPanelSearch);
+        jPanelSearch.setLayout(jPanelSearchLayout);
+        jPanelSearchLayout.setHorizontalGroup(
+            jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSearchLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(searchPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
+                        .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchISBNField)
+                            .addComponent(searchTitleField)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(69, 69, 69)
+                        .addComponent(searchAuthorField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(52, 52, 52)
+                        .addComponent(searchEditorialField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addGap(56, 56, 56)
+                        .addComponent(searchEdicionField))
+                    .addComponent(jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchSectionButton)
+                .addGap(122, 122, 122))
+        );
+        jPanelSearchLayout.setVerticalGroup(
+            jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSearchLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchISBNField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20)
+                    .addComponent(searchSectionButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(searchTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(searchAuthorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(searchEditorialField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(searchEdicionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(searchPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelResult)
+                .addContainerGap(63, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Buscar", jPanelSearch);
+
+        jLabel14.setText("ISBN");
+
+        createISBNField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createISBNFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Título");
+
+        createTitleField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTitleFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Autor");
+
+        jLabel17.setText("Editorial");
+
+        jLabel18.setText("Edición");
+
+        jLabel19.setText("Año publicación");
+
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        createSaveButton.setLabel("Guardar");
+        createSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createSaveButtonActionPerformed(evt);
+            }
+        });
+
+        jLabelResult3.setText("Ingrese los datos del libro:");
+
+        javax.swing.GroupLayout jPanelCreateLayout = new javax.swing.GroupLayout(jPanelCreate);
+        jPanelCreate.setLayout(jPanelCreateLayout);
+        jPanelCreateLayout.setHorizontalGroup(
+            jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCreateLayout.createSequentialGroup()
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelCreateLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(createSaveButton))
+                    .addGroup(jPanelCreateLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(createISBNField)
+                                    .addComponent(createTitleField)))
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(69, 69, 69)
+                                .addComponent(createAuthorField))
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(52, 52, 52)
+                                .addComponent(createEditorialField))
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(56, 56, 56)
+                                .addComponent(createEdicionField))
+                            .addComponent(jLabelResult3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                        .addGap(172, 172, 172)))
+                .addGap(28, 28, 28))
+        );
+        jPanelCreateLayout.setVerticalGroup(
+            jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabelResult3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createISBNField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(createTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(createAuthorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(createEditorialField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(createEdicionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(createPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2)
+                    .addComponent(createSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(14, 14, 14))
+        );
+
+        jTabbedPane1.addTab("Crear", jPanelCreate);
+
+        jLabel8.setText("ISBN");
+
+        editISBNField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editISBNFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Título");
+
+        editTitleField.setBackground(new java.awt.Color(255, 255, 255));
+        editTitleField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        editTitleField.setEnabled(false);
+        editTitleField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTitleFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Autor");
+
+        editAuthorField.setBackground(new java.awt.Color(255, 255, 255));
+        editAuthorField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        editAuthorField.setEnabled(false);
+
+        jLabel11.setText("Editorial");
+
+        editEditorialField.setBackground(new java.awt.Color(255, 255, 255));
+        editEditorialField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        editEditorialField.setEnabled(false);
+
+        jLabel12.setText("Edición");
+
+        editEdicionField.setBackground(new java.awt.Color(255, 255, 255));
+        editEdicionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        editEdicionField.setEnabled(false);
+
+        jLabel13.setText("Año publicación");
+
+        editPublicacionField.setBackground(new java.awt.Color(255, 255, 255));
+        editPublicacionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        editPublicacionField.setEnabled(false);
+
+        editSearchButton.setText("Buscar");
+        editSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSearchButtonActionPerformed(evt);
+            }
+        });
+
+        editCancelButton.setText("Cancelar");
+        editCancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCancelButtonActionPerformed(evt);
+            }
+        });
+
+        editSaveButton.setLabel("Guardar");
+        editSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editSaveButtonActionPerformed(evt);
+            }
+        });
+
+        jLabelResult2.setText("Ingrese el ISBN del libro deseado:");
+
+        javax.swing.GroupLayout jPanelEditLayout = new javax.swing.GroupLayout(jPanelEdit);
+        jPanelEdit.setLayout(jPanelEditLayout);
+        jPanelEditLayout.setHorizontalGroup(
+            jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEditLayout.createSequentialGroup()
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelEditLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(editCancelButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editSaveButton))
+                    .addGroup(jPanelEditLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editPublicacionField))
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8))
+                                .addGap(67, 67, 67)
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editISBNField)
+                                    .addComponent(editTitleField)))
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(69, 69, 69)
+                                .addComponent(editAuthorField))
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(52, 52, 52)
+                                .addComponent(editEditorialField))
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(56, 56, 56)
+                                .addComponent(editEdicionField))
+                            .addComponent(jLabelResult2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editSearchButton)
+                        .addGap(94, 94, 94)))
+                .addGap(28, 28, 28))
+        );
+        jPanelEditLayout.setVerticalGroup(
+            jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabelResult2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editISBNField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(editSearchButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(editTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(editAuthorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(editEditorialField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(editEdicionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(editPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(editCancelButton)
+                    .addComponent(editSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(14, 14, 14))
+        );
+
+        jTabbedPane1.addTab("Editar", jPanelEdit);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel6)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editorialField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edicionField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(titleField)
-                            .addComponent(ISBNField, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(publicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ISBNSearchField)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ISBNField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(authorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(editorialField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(edicionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(publicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(35, 35, 35))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(saveButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(searchButton)
-                                    .addComponent(ISBNSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titleFieldActionPerformed
 
     private Libro searchBook(String ISBN) {
         int pos = 0;
@@ -234,50 +529,111 @@ public class Administracion extends javax.swing.JFrame {
         return null;
     }
     
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        Libro libroEncontrado = searchBook(ISBNSearchField.getText());
+    private void editSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSearchButtonActionPerformed
+        libroAEditarEncontrado = searchBook(editISBNField.getText());
+        Boolean existeLibro = libroAEditarEncontrado != null;
 
-        if (libroEncontrado != null) {
-            ISBNField.setText(libroEncontrado.getISBN());
-            titleField.setText(libroEncontrado.getTitulo());
-            authorField.setText(libroEncontrado.getAutor());
-            editorialField.setText(libroEncontrado.getEditorial());
-            edicionField.setText(Integer.toString(libroEncontrado.getEdicion()));
-            publicacionField.setText(Integer.toString(libroEncontrado.getAnno_de_publicacion()));
+        if (existeLibro) {
+            editTitleField.setText(libroAEditarEncontrado.getTitulo());
+            editAuthorField.setText(libroAEditarEncontrado.getAutor());
+            editEditorialField.setText(libroAEditarEncontrado.getEditorial());
+            editEdicionField.setText(Integer.toString(libroAEditarEncontrado.getEdicion()));
+            editPublicacionField.setText(Integer.toString(libroAEditarEncontrado.getAnno_de_publicacion()));            
         } else {
-            ISBNField.setText("");
-            titleField.setText("");
-            authorField.setText("");
-            editorialField.setText("");
-            edicionField.setText("");
-            publicacionField.setText("");
+            editTitleField.setText("");
+            editAuthorField.setText("");
+            editEditorialField.setText("");
+            editEdicionField.setText("");
+            editPublicacionField.setText("");
         }
-    }//GEN-LAST:event_searchButtonActionPerformed
+        
+        editTitleField.setEnabled(existeLibro);
+        editAuthorField.setEnabled(existeLibro);
+        editEditorialField.setEnabled(existeLibro);
+        editEdicionField.setEnabled(existeLibro);
+        editPublicacionField.setEnabled(existeLibro);
+    }//GEN-LAST:event_editSearchButtonActionPerformed
 
-    private void ISBNSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ISBNSearchFieldActionPerformed
-
-    }//GEN-LAST:event_ISBNSearchFieldActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void editCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCancelButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_editCancelButtonActionPerformed
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+    private void editSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSaveButtonActionPerformed
+        int index = Integer.parseInt(libroAEditarEncontrado.getId());
+        libroAEditarEncontrado.setISBN(editISBNField.getText());
+        libroAEditarEncontrado.setTitulo(editTitleField.getText());
+        libroAEditarEncontrado.setAutor(editAuthorField.getText());
+        libroAEditarEncontrado.setEditorial(editEditorialField.getText());
+        libroAEditarEncontrado.setEdicion(Integer.parseInt(editEdicionField.getText()));
+        libroAEditarEncontrado.setAnno_de_publicacion(Integer.parseInt(editPublicacionField.getText()));
+        
+        
+        librosVector.set(index-1, libroAEditarEncontrado);
+        Biblioteca.printEnArchivo(librosVector);
+    }//GEN-LAST:event_editSaveButtonActionPerformed
+
+    private void editISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editISBNFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editISBNFieldActionPerformed
+
+    private void editTitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTitleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editTitleFieldActionPerformed
+
+    private void createISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createISBNFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createISBNFieldActionPerformed
+
+    private void createTitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTitleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createTitleFieldActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void createSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSaveButtonActionPerformed
         Libro libro = new Libro();
         libro.setId(librosVector.size()+1+"");
-        libro.setISBN(ISBNField.getText());
-        libro.setTitulo(titleField.getText());
-        libro.setAutor(authorField.getText());
-        libro.setEditorial(editorialField.getText());
-        libro.setEdicion(Integer.parseInt(edicionField.getText()));
-        libro.setAnno_de_publicacion(Integer.parseInt(publicacionField.getText()));
+        libro.setISBN(createISBNField.getText());
+        libro.setTitulo(createTitleField.getText());
+        libro.setAutor(createAuthorField.getText());
+        libro.setEditorial(createEditorialField.getText());
+        libro.setEdicion(Integer.parseInt(createEdicionField.getText()));
+        libro.setAnno_de_publicacion(Integer.parseInt(createPublicacionField.getText()));
         librosVector.add(libro);
         Biblioteca.printEnArchivo(librosVector);
-    }//GEN-LAST:event_saveButtonActionPerformed
+    }//GEN-LAST:event_createSaveButtonActionPerformed
 
-    private void ISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ISBNFieldActionPerformed
+    private void searchISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchISBNFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ISBNFieldActionPerformed
+    }//GEN-LAST:event_searchISBNFieldActionPerformed
+
+    private void searchTitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTitleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTitleFieldActionPerformed
+
+    private void searchSectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchSectionButtonActionPerformed
+        Libro libroEncontrado = searchBook(searchISBNField.getText());
+
+        if (libroEncontrado != null) {
+            searchTitleField.setText(libroEncontrado.getTitulo());
+            searchAuthorField.setText(libroEncontrado.getAutor());
+            searchEditorialField.setText(libroEncontrado.getEditorial());
+            searchEdicionField.setText(Integer.toString(libroEncontrado.getEdicion()));
+            searchPublicacionField.setText(Integer.toString(libroEncontrado.getAnno_de_publicacion()));
+            
+            jLabelResult.setText("");
+        } else {
+            searchTitleField.setText("");
+            searchAuthorField.setText("");
+            searchEditorialField.setText("");
+            searchEdicionField.setText("");
+            searchPublicacionField.setText("");
+            
+            jLabelResult.setText("No hay resultados de su busqueda...");
+        }
+    }//GEN-LAST:event_searchSectionButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,24 +671,56 @@ public class Administracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ISBNField;
-    private javax.swing.JTextField ISBNSearchField;
-    private javax.swing.JTextField authorField;
-    private javax.swing.JTextField edicionField;
-    private javax.swing.JTextField editorialField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField createAuthorField;
+    private javax.swing.JTextField createEdicionField;
+    private javax.swing.JTextField createEditorialField;
+    private javax.swing.JTextField createISBNField;
+    private javax.swing.JTextField createPublicacionField;
+    private javax.swing.JButton createSaveButton;
+    private javax.swing.JTextField createTitleField;
+    private javax.swing.JTextField editAuthorField;
+    private javax.swing.JButton editCancelButton;
+    private javax.swing.JTextField editEdicionField;
+    private javax.swing.JTextField editEditorialField;
+    private javax.swing.JTextField editISBNField;
+    private javax.swing.JTextField editPublicacionField;
+    private javax.swing.JButton editSaveButton;
+    private javax.swing.JButton editSearchButton;
+    private javax.swing.JTextField editTitleField;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField publicacionField;
-    private javax.swing.JButton saveButton;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JTextField titleField;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelResult;
+    private javax.swing.JLabel jLabelResult2;
+    private javax.swing.JLabel jLabelResult3;
+    private javax.swing.JPanel jPanelCreate;
+    private javax.swing.JPanel jPanelEdit;
+    private javax.swing.JPanel jPanelSearch;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField searchAuthorField;
+    private javax.swing.JTextField searchEdicionField;
+    private javax.swing.JTextField searchEditorialField;
+    private javax.swing.JTextField searchISBNField;
+    private javax.swing.JTextField searchPublicacionField;
+    private javax.swing.JButton searchSectionButton;
+    private javax.swing.JTextField searchTitleField;
     // End of variables declaration//GEN-END:variables
 }

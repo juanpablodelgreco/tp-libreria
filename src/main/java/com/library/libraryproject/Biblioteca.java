@@ -95,6 +95,7 @@ public class Biblioteca {
             @Override
             public void funcion(Libro libro, Object parametros) {
                 PrintStream archivo = (PrintStream) parametros;
+                archivo.print(libro.getId() + "\t");
                 archivo.print(libro.getISBN() + "\t");
                 archivo.print(libro.getTitulo() + "\t");
                 archivo.print(libro.getAutor() + "\t");
