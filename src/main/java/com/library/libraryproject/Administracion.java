@@ -55,6 +55,7 @@ public class Administracion extends javax.swing.JFrame {
         jPanelList = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
+        logoutButton = new javax.swing.JButton();
         jPanelSearch = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         searchISBNField = new javax.swing.JTextField();
@@ -135,17 +136,30 @@ public class Administracion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableLista);
 
+        logoutButton.setText("Salir");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelListLayout = new javax.swing.GroupLayout(jPanelList);
         jPanelList.setLayout(jPanelListLayout);
         jPanelListLayout.setHorizontalGroup(
             jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelListLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton)
+                .addGap(15, 15, 15))
         );
         jPanelListLayout.setVerticalGroup(
             jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelListLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logoutButton)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lista", jPanelList);
@@ -407,7 +421,6 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel9.setText("Título");
 
-        editTitleField.setBackground(new java.awt.Color(255, 255, 255));
         editTitleField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editTitleField.setEnabled(false);
         editTitleField.addActionListener(new java.awt.event.ActionListener() {
@@ -418,25 +431,21 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel10.setText("Autor");
 
-        editAuthorField.setBackground(new java.awt.Color(255, 255, 255));
         editAuthorField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editAuthorField.setEnabled(false);
 
         jLabel11.setText("Editorial");
 
-        editEditorialField.setBackground(new java.awt.Color(255, 255, 255));
         editEditorialField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editEditorialField.setEnabled(false);
 
         jLabel12.setText("Edición");
 
-        editEdicionField.setBackground(new java.awt.Color(255, 255, 255));
         editEdicionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editEdicionField.setEnabled(false);
 
         jLabel13.setText("Año publicación");
 
-        editPublicacionField.setBackground(new java.awt.Color(255, 255, 255));
         editPublicacionField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editPublicacionField.setEnabled(false);
 
@@ -719,6 +728,11 @@ public class Administracion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchSectionButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        new Login().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -803,6 +817,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableLista;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField searchAuthorField;
     private javax.swing.JTextField searchEdicionField;
     private javax.swing.JTextField searchEditorialField;

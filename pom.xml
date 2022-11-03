@@ -9,6 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>com.library.libraryproject.Administracion</exec.mainClass>
+        <exec.mainClass>com.library.libraryproject.Login</exec.mainClass>
     </properties>
 </project>
