@@ -90,4 +90,10 @@ public class Libro implements Comparable<Libro> {
     public void setAnno_de_publicacion(int anno_de_publicacion) {
         this.anno_de_publicacion = anno_de_publicacion;
     }
+    
+    public Object[] asRow() {
+        Object[] objs = { ISBN, titulo, autor, editorial, edicion, anno_de_publicacion };
+        
+        return objs;
+    }
 }
