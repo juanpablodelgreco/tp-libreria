@@ -7,6 +7,7 @@ package com.library.libraryproject;
 import static com.library.libraryproject.Biblioteca.leer_cadena;
 import static com.library.libraryproject.Biblioteca.leer_entero;
 import static com.library.libraryproject.Biblioteca.out;
+import java.awt.Color;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,8 +51,10 @@ public class Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanelList = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableLista = new javax.swing.JTable();
         jPanelSearch = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         searchISBNField = new javax.swing.JTextField();
@@ -84,6 +87,7 @@ public class Administracion extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         createSaveButton = new javax.swing.JButton();
         jLabelResult3 = new javax.swing.JLabel();
+        jLabelStatus = new javax.swing.JLabel();
         jPanelEdit = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         editISBNField = new javax.swing.JTextField();
@@ -101,14 +105,50 @@ public class Administracion extends javax.swing.JFrame {
         editCancelButton = new javax.swing.JButton();
         editSaveButton = new javax.swing.JButton();
         jLabelResult2 = new javax.swing.JLabel();
-        jPanelList = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableLista = new javax.swing.JTable();
+        jLabelEditStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestor de Libros");
 
-        jLabel6.setText("Administración de libros");
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ISBN", "Titulo", "Autor", "Editorial", "Edicion", "Año"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableLista);
+
+        javax.swing.GroupLayout jPanelListLayout = new javax.swing.GroupLayout(jPanelList);
+        jPanelList.setLayout(jPanelListLayout);
+        jPanelListLayout.setHorizontalGroup(
+            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+        );
+        jPanelListLayout.setVerticalGroup(
+            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelListLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Lista", jPanelList);
 
         jLabel20.setText("ISBN");
 
@@ -229,7 +269,7 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(searchPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelResult)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Buscar", jPanelSearch);
@@ -289,10 +329,6 @@ public class Administracion extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCreateLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(createPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
-                            .addGroup(jPanelCreateLayout.createSequentialGroup()
                                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel14))
@@ -312,7 +348,12 @@ public class Administracion extends javax.swing.JFrame {
                                 .addComponent(jLabel18)
                                 .addGap(56, 56, 56)
                                 .addComponent(createEdicionField))
-                            .addComponent(jLabelResult3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                            .addComponent(jLabelResult3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                            .addComponent(jLabelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(172, 172, 172)))
                 .addGap(28, 28, 28))
         );
@@ -345,7 +386,9 @@ public class Administracion extends javax.swing.JFrame {
                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(createPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2)
                     .addComponent(createSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -458,7 +501,8 @@ public class Administracion extends javax.swing.JFrame {
                                 .addComponent(jLabel12)
                                 .addGap(56, 56, 56)
                                 .addComponent(editEdicionField))
-                            .addComponent(jLabelResult2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                            .addComponent(jLabelResult2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jLabelEditStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editSearchButton)
                         .addGap(94, 94, 94)))
@@ -494,7 +538,9 @@ public class Administracion extends javax.swing.JFrame {
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(editPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelEditStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(editCancelButton)
                     .addComponent(editSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -503,68 +549,20 @@ public class Administracion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Editar", jPanelEdit);
 
-        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ISBN", "Titulo", "Autor", "Editorial", "Edicion", "Año"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableLista);
-
-        javax.swing.GroupLayout jPanelListLayout = new javax.swing.GroupLayout(jPanelList);
-        jPanelList.setLayout(jPanelListLayout);
-        jPanelListLayout.setHorizontalGroup(
-            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-        );
-        jPanelListLayout.setVerticalGroup(
-            jPanelListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelListLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Lista", jPanelList);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1)))
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -584,6 +582,7 @@ public class Administracion extends javax.swing.JFrame {
     }
     
     private void editSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSearchButtonActionPerformed
+        jLabelEditStatus.setText("");
         libroAEditarEncontrado = searchBook(editISBNField.getText());
         Boolean existeLibro = libroAEditarEncontrado != null;
 
@@ -613,17 +612,24 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_editCancelButtonActionPerformed
 
     private void editSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSaveButtonActionPerformed
-        int index = Integer.parseInt(libroAEditarEncontrado.getId());
-        libroAEditarEncontrado.setISBN(editISBNField.getText());
-        libroAEditarEncontrado.setTitulo(editTitleField.getText());
-        libroAEditarEncontrado.setAutor(editAuthorField.getText());
-        libroAEditarEncontrado.setEditorial(editEditorialField.getText());
-        libroAEditarEncontrado.setEdicion(Integer.parseInt(editEdicionField.getText()));
-        libroAEditarEncontrado.setAnno_de_publicacion(Integer.parseInt(editPublicacionField.getText()));
-        
-        
-        librosVector.set(index-1, libroAEditarEncontrado);
-        Biblioteca.printEnArchivo(librosVector);
+        try {
+            int index = Integer.parseInt(libroAEditarEncontrado.getId());
+            libroAEditarEncontrado.setISBN(editISBNField.getText());
+            libroAEditarEncontrado.setTitulo(editTitleField.getText());
+            libroAEditarEncontrado.setAutor(editAuthorField.getText());
+            libroAEditarEncontrado.setEditorial(editEditorialField.getText());
+            libroAEditarEncontrado.setEdicion(Integer.parseInt(editEdicionField.getText()));
+            libroAEditarEncontrado.setAnno_de_publicacion(Integer.parseInt(editPublicacionField.getText()));
+
+            librosVector.set(index-1, libroAEditarEncontrado);
+            updateTable(libroAEditarEncontrado);
+            Biblioteca.printEnArchivo(librosVector);
+            jLabelEditStatus.setText("Editado exitosamente");
+            jLabelEditStatus.setForeground(Color.BLUE);
+        } catch (Exception e) {
+            jLabelEditStatus.setText("Ups ha ocurrido un error");
+            jLabelEditStatus.setForeground(Color.RED);
+        }
     }//GEN-LAST:event_editSaveButtonActionPerformed
 
     private void editISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editISBNFieldActionPerformed
@@ -646,17 +652,41 @@ public class Administracion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void updateTable(Libro libro) {
+        DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
+        Object[] row = libro.asRow();
+        int i=0;
+        
+        for(Object value : row) {
+            model.setValueAt(value, Integer.parseInt(libro.getId())-1, i++);
+        }
+    }
+    
+    private void addToTable(Libro libro) {
+        DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
+        model.addRow(libro.asRow());
+    }
+    
     private void createSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSaveButtonActionPerformed
-        Libro libro = new Libro();
-        libro.setId(librosVector.size()+1+"");
-        libro.setISBN(createISBNField.getText());
-        libro.setTitulo(createTitleField.getText());
-        libro.setAutor(createAuthorField.getText());
-        libro.setEditorial(createEditorialField.getText());
-        libro.setEdicion(Integer.parseInt(createEdicionField.getText()));
-        libro.setAnno_de_publicacion(Integer.parseInt(createPublicacionField.getText()));
-        librosVector.add(libro);
-        Biblioteca.printEnArchivo(librosVector);
+        try {
+            Libro libro = new Libro();
+            libro.setId(librosVector.size()+1+"");
+            libro.setISBN(createISBNField.getText());
+            libro.setTitulo(createTitleField.getText());
+            libro.setAutor(createAuthorField.getText());
+            libro.setEditorial(createEditorialField.getText());
+            libro.setEdicion(Integer.parseInt(createEdicionField.getText()));
+            libro.setAnno_de_publicacion(Integer.parseInt(createPublicacionField.getText()));
+
+            librosVector.add(libro);
+            addToTable(libro);
+            Biblioteca.printEnArchivo(librosVector);
+            jLabelStatus.setText("Guardado exitosamente");
+            jLabelStatus.setForeground(Color.BLUE);
+        } catch (Exception e) {
+            jLabelStatus.setText("Ups ha ocurrido un error");
+            jLabelStatus.setForeground(Color.RED);
+        }
     }//GEN-LAST:event_createSaveButtonActionPerformed
 
     private void searchISBNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchISBNFieldActionPerformed
@@ -759,12 +789,13 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelEditStatus;
     private javax.swing.JLabel jLabelResult;
     private javax.swing.JLabel jLabelResult2;
     private javax.swing.JLabel jLabelResult3;
+    private javax.swing.JLabel jLabelStatus;
     private javax.swing.JPanel jPanelCreate;
     private javax.swing.JPanel jPanelEdit;
     private javax.swing.JPanel jPanelList;
