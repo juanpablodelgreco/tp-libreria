@@ -136,7 +136,7 @@ public class Administracion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableLista);
 
-        logoutButton.setText("Salir");
+        logoutButton.setText("Cerrar sesión");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutButtonActionPerformed(evt);
