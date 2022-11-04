@@ -105,7 +105,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         editPublicacionField = new javax.swing.JTextField();
         editSearchButton = new javax.swing.JButton();
-        editCancelButton = new javax.swing.JButton();
+        clearEditButton = new javax.swing.JButton();
         editSaveButton = new javax.swing.JButton();
         jLabelResult2 = new javax.swing.JLabel();
         jLabelEditStatus = new javax.swing.JLabel();
@@ -355,28 +355,28 @@ public class Administracion extends javax.swing.JFrame {
                                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
                                     .addComponent(jLabel14))
-                                .addGap(67, 67, 67)
+                                .addGap(65, 65, 65)
                                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(createISBNField)
-                                    .addComponent(createTitleField)))
-                            .addGroup(jPanelCreateLayout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addGap(69, 69, 69)
-                                .addComponent(createAuthorField))
-                            .addGroup(jPanelCreateLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(52, 52, 52)
-                                .addComponent(createEditorialField))
-                            .addGroup(jPanelCreateLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(56, 56, 56)
-                                .addComponent(createEdicionField))
+                                    .addComponent(createTitleField)
+                                    .addComponent(createISBNField)))
                             .addComponent(jLabelResult3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jLabelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanelCreateLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(createPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
-                            .addComponent(jLabelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel16))
+                                .addGap(52, 52, 52)
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(createAuthorField)
+                                    .addComponent(createEditorialField)))
+                            .addGroup(jPanelCreateLayout.createSequentialGroup()
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel19))
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(createPublicacionField)
+                                    .addComponent(createEdicionField))))
                         .addGap(172, 172, 172)))
                 .addGap(28, 28, 28))
         );
@@ -411,7 +411,7 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(createPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(jPanelCreateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2)
                     .addComponent(createSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -442,6 +442,11 @@ public class Administracion extends javax.swing.JFrame {
 
         editAuthorField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         editAuthorField.setEnabled(false);
+        editAuthorField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAuthorFieldActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Editorial");
 
@@ -465,10 +470,10 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
 
-        editCancelButton.setText("Cancelar");
-        editCancelButton.addActionListener(new java.awt.event.ActionListener() {
+        clearEditButton.setText("Limpiar");
+        clearEditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editCancelButtonActionPerformed(evt);
+                clearEditButtonActionPerformed(evt);
             }
         });
 
@@ -489,38 +494,38 @@ public class Administracion extends javax.swing.JFrame {
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelEditLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(editCancelButton)
+                        .addComponent(clearEditButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editSaveButton))
                     .addGroup(jPanelEditLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editPublicacionField))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
                                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel8))
-                                .addGap(67, 67, 67)
+                                .addGap(65, 65, 65)
                                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editISBNField)
-                                    .addComponent(editTitleField)))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(69, 69, 69)
-                                .addComponent(editAuthorField))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(52, 52, 52)
-                                .addComponent(editEditorialField))
-                            .addGroup(jPanelEditLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(56, 56, 56)
-                                .addComponent(editEdicionField))
+                                    .addComponent(editTitleField)
+                                    .addComponent(editISBNField)))
                             .addComponent(jLabelResult2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(jLabelEditStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelEditStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editPublicacionField)
+                                    .addComponent(editEdicionField)))
+                            .addGroup(jPanelEditLayout.createSequentialGroup()
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10))
+                                .addGap(52, 52, 52)
+                                .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(editAuthorField)
+                                    .addComponent(editEditorialField))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(editSearchButton)
                         .addGap(94, 94, 94)))
@@ -558,9 +563,9 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(editPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEditStatus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanelEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(editCancelButton)
+                    .addComponent(clearEditButton)
                     .addComponent(editSaveButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(14, 14, 14))
         );
@@ -604,34 +609,41 @@ public class Administracion extends javax.swing.JFrame {
         jLabelEditStatus.setText("");
         libroAEditarEncontrado = searchBook(editISBNField.getText());
         Boolean existeLibro = libroAEditarEncontrado != null;
-
+        editTitleField.setEnabled(existeLibro);
+        editAuthorField.setEnabled(existeLibro);
+        editEditorialField.setEnabled(existeLibro);
+        editEdicionField.setEnabled(existeLibro);
+        editPublicacionField.setEnabled(existeLibro);
         if (existeLibro) {
             editTitleField.setText(libroAEditarEncontrado.getTitulo());
             editAuthorField.setText(libroAEditarEncontrado.getAutor());
             editEditorialField.setText(libroAEditarEncontrado.getEditorial());
             editEdicionField.setText(Integer.toString(libroAEditarEncontrado.getEdicion()));
             editPublicacionField.setText(Integer.toString(libroAEditarEncontrado.getAnno_de_publicacion()));
+
         } else {
             editTitleField.setText("");
             editAuthorField.setText("");
             editEditorialField.setText("");
             editEdicionField.setText("");
             editPublicacionField.setText("");
+            JOptionPane.showMessageDialog(null, "No existe un libro registrado con ese ISBN.");
         }
-
-        editTitleField.setEnabled(existeLibro);
-        editAuthorField.setEnabled(existeLibro);
-        editEditorialField.setEnabled(existeLibro);
-        editEdicionField.setEnabled(existeLibro);
-        editPublicacionField.setEnabled(existeLibro);
     }//GEN-LAST:event_editSearchButtonActionPerformed
-
-    private void editCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editCancelButtonActionPerformed
 
     private void editSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSaveButtonActionPerformed
         try {
+
+            if (editISBNField.getText().isEmpty()
+                    || editTitleField.getText().isEmpty()
+                    || editAuthorField.getText().isEmpty()
+                    || editEditorialField.getText().isEmpty()
+                    || editEdicionField.getText().isEmpty()
+                    || editPublicacionField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.");
+                return;
+            }
+
             int index = Integer.parseInt(libroAEditarEncontrado.getId());
             libroAEditarEncontrado.setISBN(editISBNField.getText());
             libroAEditarEncontrado.setTitulo(editTitleField.getText());
@@ -643,11 +655,11 @@ public class Administracion extends javax.swing.JFrame {
             librosVector.set(index - 1, libroAEditarEncontrado);
             updateTable(libroAEditarEncontrado);
             Biblioteca.printEnArchivo(librosVector);
-            jLabelEditStatus.setText("Editado exitosamente");
-            jLabelEditStatus.setForeground(Color.BLUE);
-        } catch (Exception e) {
-            jLabelEditStatus.setText("Ups ha ocurrido un error");
-            jLabelEditStatus.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "Libro editado correctamente.");
+            return;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Los campos de edición y año de publicación deben ser núméricos.");
+            return;
         }
     }//GEN-LAST:event_editSaveButtonActionPerformed
 
@@ -668,7 +680,7 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_createTitleFieldActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        clearFields();
+        clearCreateFields();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void updateTable(Libro libro) {
@@ -718,7 +730,7 @@ public class Administracion extends javax.swing.JFrame {
             Biblioteca.printEnArchivo(librosVector);
             jLabelStatus.setText("");
             JOptionPane.showMessageDialog(null, "Libro guardado correctamente.");
-            clearFields();
+            clearCreateFields();
             return;
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Los campos de edición y año de publicación deben ser núméricos.");
@@ -743,7 +755,6 @@ public class Administracion extends javax.swing.JFrame {
             searchEditorialField.setText(libroEncontrado.getEditorial());
             searchEdicionField.setText(Integer.toString(libroEncontrado.getEdicion()));
             searchPublicacionField.setText(Integer.toString(libroEncontrado.getAnno_de_publicacion()));
-
             jLabelResult.setText("");
         } else {
             searchTitleField.setText("");
@@ -751,8 +762,7 @@ public class Administracion extends javax.swing.JFrame {
             searchEditorialField.setText("");
             searchEdicionField.setText("");
             searchPublicacionField.setText("");
-
-            jLabelResult.setText("No hay resultados de su busqueda...");
+              JOptionPane.showMessageDialog(null, "No existe un libro registrado con ese ISBN.");
         }
     }//GEN-LAST:event_searchSectionButtonActionPerformed
 
@@ -764,8 +774,25 @@ public class Administracion extends javax.swing.JFrame {
     private void createEdicionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEdicionFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createEdicionFieldActionPerformed
-    
-    private void clearFields() {
+
+    private void clearEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearEditButtonActionPerformed
+        clearEditFields();
+    }//GEN-LAST:event_clearEditButtonActionPerformed
+
+    private void editAuthorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAuthorFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editAuthorFieldActionPerformed
+
+    private void clearEditFields() {
+        editISBNField.setText("");
+        editTitleField.setText("");
+        editAuthorField.setText("");
+        editEditorialField.setText("");
+        editEdicionField.setText("");
+        editPublicacionField.setText("");
+    }
+
+    private void clearCreateFields() {
         createISBNField.setText("");
         createTitleField.setText("");
         createAuthorField.setText("");
@@ -773,6 +800,7 @@ public class Administracion extends javax.swing.JFrame {
         createEdicionField.setText("");
         createPublicacionField.setText("");
     }
+
     /**
      * @param args the command line arguments
      */
@@ -809,6 +837,7 @@ public class Administracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearEditButton;
     private javax.swing.JTextField createAuthorField;
     private javax.swing.JTextField createEdicionField;
     private javax.swing.JTextField createEditorialField;
@@ -817,7 +846,6 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton createSaveButton;
     private javax.swing.JTextField createTitleField;
     private javax.swing.JTextField editAuthorField;
-    private javax.swing.JButton editCancelButton;
     private javax.swing.JTextField editEdicionField;
     private javax.swing.JTextField editEditorialField;
     private javax.swing.JTextField editISBNField;
