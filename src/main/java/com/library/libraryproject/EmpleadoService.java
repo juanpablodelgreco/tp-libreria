@@ -16,10 +16,10 @@ import java.util.Vector;
  * @author Juan Pablo
  */
 public class EmpleadoService {
+
     public static Vector<Empleado> empleadosVector;
     public static String ruta = "empleados.tsv";
-    
-    
+
     public static Vector<Empleado> getEmpleadosFromFile() {
         // agregada 2.
         // Trae los libros de "libros.tsv"
@@ -32,10 +32,8 @@ public class EmpleadoService {
             Scanner entrada = new Scanner(new FileReader(ruta));
             while (entrada.hasNextLine()) {
                 campos = entrada.nextLine().split("\t");
-                empleado = new Empleado();
+                empleado = new Empleado(campos[1], campos[2]);
                 empleado.setId(campos[0]);
-                empleado.setUserName(campos[1]);
-                empleado.setPassword(campos[2]);
                 vector.add(empleado);
                 System.out.println(empleado.toString());
             }
@@ -47,33 +45,46 @@ public class EmpleadoService {
     }
 
     public static void printEnArchivo(Vector<Empleado> vector) {
-    // agregada 3
-    // guarda en archivo de ruta seteada
+        // agregada 3
+        // guarda en archivo de ruta seteada
 
-    int i, n;
+        int i, n;
 
-    Funcion<Empleado> imprimirEnArchivo = new Funcion<Empleado>() {
-        @Override
-        public void funcion(Empleado empleado, Object parametros) {
-            PrintStream archivo = (PrintStream) parametros;
-            archivo.print(empleado.getId() + "\t");
-            archivo.print(empleado.getUserName() + "\t");
-            archivo.print(empleado.getPassword() + "\n");
+        Funcion<Empleado> imprimirEnArchivo = new Funcion<Empleado>() {
+            @Override
+            public void funcion(Empleado empleado, Object parametros) {
+                PrintStream archivo = (PrintStream) parametros;
+                archivo.print(empleado.getId() + "\t");
+                archivo.print(empleado.getUserName() + "\t");
+                archivo.print(empleado.getPassword() + "\n");
+            }
+        };
+        try {
+            PrintStream salida = new PrintStream(ruta);
+            n = vector.size();
+            for (i = 0; i < n; i++) {
+                imprimirEnArchivo.funcion(vector.get(i), salida);
+            }
+            salida.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-    };
-    try {
-        PrintStream salida = new PrintStream(ruta);
-        n = vector.size();
-        for (i = 0; i < n; i++) {
-            imprimirEnArchivo.funcion(vector.get(i), salida);
-        }
-        salida.close();
-    } catch (FileNotFoundException e) {
-        System.out.println(e.getMessage());
     }
-}
-    
+
     public static void loadEmpleados() {
         EmpleadoService.empleadosVector = EmpleadoService.getEmpleadosFromFile();
+    }
+
+    public static Empleado searchEmpleado(String userName) {
+        int pos = 0;
+
+        for (Empleado empleado : empleadosVector) {
+            if (userName.equalsIgnoreCase(empleado.getUserName())) {
+                return empleadosVector.get(pos);
+            }
+            pos++;
+        }
+
+        return null;
     }
 }

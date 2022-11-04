@@ -9,6 +9,7 @@ import static com.library.libraryproject.Biblioteca.leer_entero;
 import static com.library.libraryproject.Biblioteca.out;
 import java.awt.Color;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,24 +23,25 @@ public class Administracion extends javax.swing.JFrame {
      */
     private Vector<Libro> librosVector;
     private Libro libroAEditarEncontrado;
-    
+
     public Administracion() {
         initComponents();
         loadBooks();
         loadTable();
+        setLocationRelativeTo(null);
     }
-    
+
     private void loadBooks() {
         librosVector = Biblioteca.getLibrosFromFile();
     }
-    
+
     private void loadTable() {
         DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
         jTableLista.setAutoCreateRowSorter(true);
-        
-        for(Libro libro : librosVector) {
+
+        for (Libro libro : librosVector) {
             model.addRow(libro.asRow());
-        }        
+        }
     }
 
     /**
@@ -309,6 +311,12 @@ public class Administracion extends javax.swing.JFrame {
         jLabel17.setText("Editorial");
 
         jLabel18.setText("Edición");
+
+        createEdicionField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createEdicionFieldActionPerformed(evt);
+            }
+        });
 
         jLabel19.setText("Año publicación");
 
@@ -581,15 +589,16 @@ public class Administracion extends javax.swing.JFrame {
     private Libro searchBook(String ISBN) {
         int pos = 0;
 
-        for(Libro libro : librosVector) {
-            if(ISBN.equalsIgnoreCase(libro.getISBN()))
+        for (Libro libro : librosVector) {
+            if (ISBN.equalsIgnoreCase(libro.getISBN())) {
                 return librosVector.get(pos);
+            }
             pos++;
         }
 
         return null;
     }
-    
+
     private void editSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editSearchButtonActionPerformed
         jLabelEditStatus.setText("");
         libroAEditarEncontrado = searchBook(editISBNField.getText());
@@ -600,7 +609,7 @@ public class Administracion extends javax.swing.JFrame {
             editAuthorField.setText(libroAEditarEncontrado.getAutor());
             editEditorialField.setText(libroAEditarEncontrado.getEditorial());
             editEdicionField.setText(Integer.toString(libroAEditarEncontrado.getEdicion()));
-            editPublicacionField.setText(Integer.toString(libroAEditarEncontrado.getAnno_de_publicacion()));            
+            editPublicacionField.setText(Integer.toString(libroAEditarEncontrado.getAnno_de_publicacion()));
         } else {
             editTitleField.setText("");
             editAuthorField.setText("");
@@ -608,7 +617,7 @@ public class Administracion extends javax.swing.JFrame {
             editEdicionField.setText("");
             editPublicacionField.setText("");
         }
-        
+
         editTitleField.setEnabled(existeLibro);
         editAuthorField.setEnabled(existeLibro);
         editEditorialField.setEnabled(existeLibro);
@@ -630,7 +639,7 @@ public class Administracion extends javax.swing.JFrame {
             libroAEditarEncontrado.setEdicion(Integer.parseInt(editEdicionField.getText()));
             libroAEditarEncontrado.setAnno_de_publicacion(Integer.parseInt(editPublicacionField.getText()));
 
-            librosVector.set(index-1, libroAEditarEncontrado);
+            librosVector.set(index - 1, libroAEditarEncontrado);
             updateTable(libroAEditarEncontrado);
             Biblioteca.printEnArchivo(librosVector);
             jLabelEditStatus.setText("Editado exitosamente");
@@ -664,22 +673,32 @@ public class Administracion extends javax.swing.JFrame {
     private void updateTable(Libro libro) {
         DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
         Object[] row = libro.asRow();
-        int i=0;
-        
-        for(Object value : row) {
-            model.setValueAt(value, Integer.parseInt(libro.getId())-1, i++);
+        int i = 0;
+
+        for (Object value : row) {
+            model.setValueAt(value, Integer.parseInt(libro.getId()) - 1, i++);
         }
     }
-    
+
     private void addToTable(Libro libro) {
         DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
         model.addRow(libro.asRow());
     }
-    
+
     private void createSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createSaveButtonActionPerformed
         try {
+            if (createISBNField.getText().isEmpty()
+                    || createTitleField.getText().isEmpty()
+                    || createAuthorField.getText().isEmpty()
+                    || createEditorialField.getText().isEmpty()
+                    || createEdicionField.getText().isEmpty()
+                    || createPublicacionField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.");
+                return;
+            }
+
             Libro libro = new Libro();
-            libro.setId(librosVector.size()+1+"");
+            libro.setId(librosVector.size() + 1 + "");
             libro.setISBN(createISBNField.getText());
             libro.setTitulo(createTitleField.getText());
             libro.setAutor(createAuthorField.getText());
@@ -687,14 +706,27 @@ public class Administracion extends javax.swing.JFrame {
             libro.setEdicion(Integer.parseInt(createEdicionField.getText()));
             libro.setAnno_de_publicacion(Integer.parseInt(createPublicacionField.getText()));
 
+            Libro libroEncontrado = searchBook(createISBNField.getText());
+            if (libroEncontrado != null) {
+                JOptionPane.showMessageDialog(null, "Ya hay un libro registrado con este ISBN.");
+                return;
+            }
+
             librosVector.add(libro);
             addToTable(libro);
             Biblioteca.printEnArchivo(librosVector);
-            jLabelStatus.setText("Guardado exitosamente");
-            jLabelStatus.setForeground(Color.BLUE);
-        } catch (Exception e) {
-            jLabelStatus.setText("Ups ha ocurrido un error");
-            jLabelStatus.setForeground(Color.RED);
+            jLabelStatus.setText("");
+            JOptionPane.showMessageDialog(null, "Libro guardado correctamente.");
+            createISBNField.setText("");
+            createTitleField.setText("");
+            createAuthorField.setText("");
+            createEditorialField.setText("");
+            createEdicionField.setText("");
+            createPublicacionField.setText("");
+            return;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Los campos de edición y año de publicación deben ser núméricos.");
+            return;
         }
     }//GEN-LAST:event_createSaveButtonActionPerformed
 
@@ -715,7 +747,7 @@ public class Administracion extends javax.swing.JFrame {
             searchEditorialField.setText(libroEncontrado.getEditorial());
             searchEdicionField.setText(Integer.toString(libroEncontrado.getEdicion()));
             searchPublicacionField.setText(Integer.toString(libroEncontrado.getAnno_de_publicacion()));
-            
+
             jLabelResult.setText("");
         } else {
             searchTitleField.setText("");
@@ -723,7 +755,7 @@ public class Administracion extends javax.swing.JFrame {
             searchEditorialField.setText("");
             searchEdicionField.setText("");
             searchPublicacionField.setText("");
-            
+
             jLabelResult.setText("No hay resultados de su busqueda...");
         }
     }//GEN-LAST:event_searchSectionButtonActionPerformed
@@ -732,6 +764,10 @@ public class Administracion extends javax.swing.JFrame {
         new Login().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void createEdicionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEdicionFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createEdicionFieldActionPerformed
 
     /**
      * @param args the command line arguments

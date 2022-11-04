@@ -11,6 +11,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setTitle("Administración de libreria");
         EmpleadoService.loadEmpleados();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -137,22 +138,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String username = usernameText.getText();
+        String userName = usernameText.getText();
         String password = passwordText.getText();
-        if(username.isEmpty() || password.isEmpty()){
+        if (userName.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ambos campos son obligatorios.");
             return;
         }
-        if(!username.equals("admin") || !password.equals("admin")){
+        Empleado empleadoNuevo = new Empleado(userName, password);
+        Empleado empleadoBuscado = EmpleadoService.searchEmpleado(userName);
+        if (empleadoBuscado == null
+                || !empleadoBuscado.getUserName().equals(empleadoNuevo.getUserName())
+                || !empleadoBuscado.getPassword().equals(empleadoNuevo.getPassword())) {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña inválido.");
             return;
         }
+
         new Administracion().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void registerUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUserButtonActionPerformed
