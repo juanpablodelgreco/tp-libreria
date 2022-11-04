@@ -111,7 +111,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabelEditStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gestor de Libros");
+        setTitle("Administración de biblioteca");
 
         jTableLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -320,7 +320,8 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel19.setText("Año publicación");
 
-        jButton2.setText("Cancelar");
+        jButton2.setText("Limpiar");
+        jButton2.setToolTipText("");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -667,7 +668,7 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_createTitleFieldActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        clearFields();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void updateTable(Libro libro) {
@@ -717,12 +718,7 @@ public class Administracion extends javax.swing.JFrame {
             Biblioteca.printEnArchivo(librosVector);
             jLabelStatus.setText("");
             JOptionPane.showMessageDialog(null, "Libro guardado correctamente.");
-            createISBNField.setText("");
-            createTitleField.setText("");
-            createAuthorField.setText("");
-            createEditorialField.setText("");
-            createEdicionField.setText("");
-            createPublicacionField.setText("");
+            clearFields();
             return;
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Los campos de edición y año de publicación deben ser núméricos.");
@@ -768,7 +764,15 @@ public class Administracion extends javax.swing.JFrame {
     private void createEdicionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEdicionFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_createEdicionFieldActionPerformed
-
+    
+    private void clearFields() {
+        createISBNField.setText("");
+        createTitleField.setText("");
+        createAuthorField.setText("");
+        createEditorialField.setText("");
+        createEdicionField.setText("");
+        createPublicacionField.setText("");
+    }
     /**
      * @param args the command line arguments
      */

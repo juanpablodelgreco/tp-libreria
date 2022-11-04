@@ -35,7 +35,6 @@ public class EmpleadoService {
                 empleado = new Empleado(campos[1], campos[2]);
                 empleado.setId(campos[0]);
                 vector.add(empleado);
-                System.out.println(empleado.toString());
             }
             entrada.close();
 

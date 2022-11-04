@@ -76,7 +76,6 @@ public class Biblioteca {
                 libro.setEdicion(Integer.parseInt(campos[5]));
                 libro.setAnno_de_publicacion(Integer.parseInt(campos[6]));
                 vector.add(libro);
-                System.out.println(libro.toString());
             }
             entrada.close();
 
