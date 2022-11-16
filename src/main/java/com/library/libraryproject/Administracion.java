@@ -74,6 +74,7 @@ public class Administracion extends javax.swing.JFrame {
         searchSectionButton = new javax.swing.JButton();
         jLabelResult = new javax.swing.JLabel();
         jLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanelCreate = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         createISBNField = new javax.swing.JTextField();
@@ -216,6 +217,13 @@ public class Administracion extends javax.swing.JFrame {
 
         jLabel.setText("Ingrese el ISBN del libro deseado:");
 
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelSearchLayout = new javax.swing.GroupLayout(jPanelSearch);
         jPanelSearch.setLayout(jPanelSearchLayout);
         jPanelSearchLayout.setHorizontalGroup(
@@ -227,7 +235,7 @@ public class Administracion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                        .addComponent(searchPublicacionField, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
                         .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21)
@@ -250,8 +258,10 @@ public class Administracion extends javax.swing.JFrame {
                         .addComponent(searchEdicionField))
                     .addComponent(jLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchSectionButton)
-                .addGap(122, 122, 122))
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(searchSectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(111, 111, 111))
         );
         jPanelSearchLayout.setVerticalGroup(
             jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +276,8 @@ public class Administracion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(searchTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchTitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
@@ -285,7 +296,7 @@ public class Administracion extends javax.swing.JFrame {
                     .addComponent(searchPublicacionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelResult)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Buscar", jPanelSearch);
@@ -693,6 +704,12 @@ public class Administracion extends javax.swing.JFrame {
         }
     }
 
+    private void deleteFromTable(Libro libro) {
+        DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
+        Object[] row = libro.asRow();
+        model.removeRow(Integer.parseInt(libro.getId()) - 1);
+    }
+
     private void addToTable(Libro libro) {
         DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
         model.addRow(libro.asRow());
@@ -762,7 +779,7 @@ public class Administracion extends javax.swing.JFrame {
             searchEditorialField.setText("");
             searchEdicionField.setText("");
             searchPublicacionField.setText("");
-              JOptionPane.showMessageDialog(null, "No existe un libro registrado con ese ISBN.");
+            JOptionPane.showMessageDialog(null, "No existe un libro registrado con ese ISBN.");
         }
     }//GEN-LAST:event_searchSectionButtonActionPerformed
 
@@ -782,6 +799,30 @@ public class Administracion extends javax.swing.JFrame {
     private void editAuthorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAuthorFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editAuthorFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Libro libroEncontrado = searchBook(searchISBNField.getText());
+        if (libroEncontrado == null) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar correctamente el registro.");
+            return;
+        }
+   
+        librosVector.remove(libroEncontrado);
+        Biblioteca.printEnArchivo(librosVector);
+        deleteFromTable(libroEncontrado);
+        loadBooks();
+        clearSearchFields();
+        JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void clearSearchFields() {
+        searchISBNField.setText("");
+        searchTitleField.setText("");
+        searchAuthorField.setText("");
+        searchEditorialField.setText("");
+        searchEdicionField.setText("");
+        searchPublicacionField.setText("");
+    }
 
     private void clearEditFields() {
         editISBNField.setText("");
@@ -853,6 +894,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton editSaveButton;
     private javax.swing.JButton editSearchButton;
     private javax.swing.JTextField editTitleField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel10;
